@@ -3,10 +3,17 @@ import {  defineField, defineType } from "sanity";
 
 
 export const orderType = defineType({
-    name: "product",
-    title: "Products",
+    name: "order",
+    title: "Order",
     type: "document",
     icon: BasketIcon,
-    fields: []
+    fields: [
+          defineField({
+            name: "orderNumber",
+            title: " Order Number",
+            type: "string",
+            validation:(Rule) => Rule.required(),
+        }),
+    ]
 
 })
