@@ -1,7 +1,5 @@
 import {  TrolleyIcon } from "@sanity/icons";
-import { Rule } from "postcss";
-import { defineConfig, defineField, defineType, Preview } from "sanity";
-import { categoryType } from "./categoryType";
+import {  defineField, defineType } from "sanity";
 
 
 export const  productType = defineType( {
@@ -72,5 +70,5 @@ export const  productType = defineType( {
                 media: select.media,
             }
         }
-    }a
+    }
 })
