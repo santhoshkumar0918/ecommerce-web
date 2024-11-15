@@ -1,13 +1,14 @@
-import { Product } from "@/sanity.types"
+import { Category, Product } from "@/sanity.types"
 
 
 
 interface ProductsViewProps{
-    products : Product[]
+    products: Product[],
+    categories : Category[],
 }
 
 
-const ProductsView = ({ products }: ProductsViewProps) => {
+const ProductsView = ({ products,categories }: ProductsViewProps) => {
      
 
     return (
