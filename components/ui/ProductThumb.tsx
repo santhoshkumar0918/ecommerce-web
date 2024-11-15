@@ -9,8 +9,8 @@ function ProductThumb({ product}: { product: Product }) {
             href={`/product/${product.slug?.current}`}
             className={`group flex flex-col p-2  bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-sm transition-all duration-200 overflow-hidden
             ${isOutOfStock ? "opacity-50" : ""}`}>
-            <div>
-                {a && (
+            <div className="relative aspect-square w-full h-full overflow-hidden">
+                {isOutOfStock && (
                     <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
                         <span className="text-white font-bold text-xl ">Out of Stock</span>
                     </div>
