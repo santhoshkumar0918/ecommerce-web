@@ -1,5 +1,5 @@
 import {  BasketIcon, TrolleyIcon } from "@sanity/icons";
-import {  defineArrayMember, defineField, defineType } from "sanity";
+import {  defineArrayMember, defineField, defineSearchFilter, defineType, RelativeTime } from "sanity";
 
 
 export const orderType = defineType({
@@ -93,7 +93,7 @@ export const orderType = defineType({
             name: "totalPrice",
             title: "Total Price",
             type: "number",
-            validation: (Rule) => Rule.required()
+            validation: (Rule) => Rule.required().min(0)
            }),
             defineField({
             name: "currency",
@@ -105,7 +105,7 @@ export const orderType = defineType({
             name: "amountDiscount",
             title: "Amout Discount",
             type: "number",
-            validation: (Rule) => Rule.required()
+            validation: (Rule) => Rule.min(0)
            }),
            defineField({
             name: "status",
@@ -122,6 +122,30 @@ export const orderType = defineType({
                 ]
             }
            }),
-    ]
+        defineField({
+            name: "orderDate",
+            title: "Order Date",
+            type: "datetime",
+            validation: (Rule) => Rule.required()
+        }),
+
+    ],
+    preview: {
+        select: {
+            name: "customerName",
+            amount: "totalPrice",
+            currency: "currency",
+            orderId: "orderNumber",
+            email:"email"
+        },
+        prepare(select) {
+            const orderIdSnippet = `${select.orderId.slice(0, 5)}...${select.orderId.slice(-5)}`;
+            return {
+                title: `${select.name} (${orderIdSnippet})`,
+                subtitle: `${select.amount} ${select.currency} ${select.email}`,
+                media:BasketIcon,
+            }
+        } 
+    }
 
 })
