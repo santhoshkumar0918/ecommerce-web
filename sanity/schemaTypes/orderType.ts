@@ -81,15 +81,47 @@ export const orderType = defineType({
                                return {
                                    title: `${select.product} x ${select.quantity},`,
                                    subtitle: `${select.quantity * select.price}`,
-                                   media:select.image,a
+                                   media:select.image,
                                }
                            }
                        }
                 })
             ]
            }),
-           
-        
+
+          defineField({
+            name: "totalPrice",
+            title: "Total Price",
+            type: "number",
+            validation: (Rule) => Rule.required()
+           }),
+            defineField({
+            name: "currency",
+            title: "Currency",
+            type: "string",
+            validation: (Rule) => Rule.required()
+           }),
+           defineField({
+            name: "amountDiscount",
+            title: "Amout Discount",
+            type: "number",
+            validation: (Rule) => Rule.required()
+           }),
+           defineField({
+            name: "status",
+            title: "Order Status",
+            type: "string",
+               options: {
+                   list: [
+                       { title: "Paid", value: "paid" },
+                       { title: "Pending", value: "pending" },
+                       { title: "Shipped", value: "shipped" },
+                       { title: "Delivered", value: "delivered" },
+                       { title: "Cancelled", value: "cancelled" },
+
+                ]
+            }
+           }),
     ]
 
 })
