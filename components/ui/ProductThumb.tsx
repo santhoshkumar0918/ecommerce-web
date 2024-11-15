@@ -13,7 +13,7 @@ function ProductThumb({ product}: { product: Product }) {
             <div className="relative aspect-square w-full h-full overflow-hidden">
                 {product.Image && (
                     <Image
-                        src={ImageUrlBuilder(product.Image)}
+                        src={ImageUrl(product.Image)}
                         className="object-contain transition-transform duration-300 group-hover:scale-105"
                         alt={product.name || "Product Image"}
                         fill
